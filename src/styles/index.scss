@@ -1,0 +1,9 @@
+@use "variables";
+
+body {
+  background-color: variables.$body-background;
+}
+
+p {
+  color: var(--text-black, #000);
+}
