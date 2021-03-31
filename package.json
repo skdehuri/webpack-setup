@@ -1,7 +1,7 @@
 {
-  "name": "portfolio",
+  "name": "webpack-setup",
   "version": "1.0.0",
-  "description": "My portfolio website",
+  "description": "This is the basic webpack 5 + react + babel setup with react refresh enabled",
   "main": "index.js",
   "private": true,
   "scripts": {
