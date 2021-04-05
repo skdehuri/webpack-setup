@@ -4,7 +4,7 @@ A basic webpack setup which contains Webpack 5, React, Babel, SASS/SCSS, PostCSS
 
 ## Project structure
 
-- `/node_modules` - It contains the heaviest objects in the universe, stores the dependencies of our project.
+- `/node_modules` - It contains the heaviest objects in the universe, npm stores the dependencies of our project in this directory.
 
 - `/src` - It contains the source code of our project. User defined.
 
