@@ -4,9 +4,10 @@ const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin"
 
 let mode = "development";
 let target = "web";
+let cssLocalIdentName = "[name]__[local]";
+let cssLoaderType = "style-loader";
 
 const plugins = [
-  new MiniCssExtractPlugin(),
   new HtmlWebpackPlugin({
     template: "./src/index.html",
   }),
@@ -15,6 +16,10 @@ const plugins = [
 if (process.env.NODE_ENV === "production") {
   mode = "production";
   target = "browserslist";
+  cssLocalIdentName = "[hash:base64]";
+  cssLoaderType = MiniCssExtractPlugin.loader;
+
+  plugins.push(new MiniCssExtractPlugin());
 }
 
 if (process.env.SERVE) {
@@ -45,8 +50,16 @@ module.exports = {
       {
         test: /\.(s[ac]|c)ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
+          cssLoaderType,
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: cssLocalIdentName,
+                exportLocalsConvention: "camelCase",
+              },
+            },
+          },
           "postcss-loader",
           "sass-loader",
         ],
